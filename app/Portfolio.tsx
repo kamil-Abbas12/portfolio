@@ -22,9 +22,28 @@ const projects = [
   { name: 'MedicalCare', kind: 'Healthcare website', url: 'https://medical-care-one.vercel.app/', repo: 'https://github.com/kamil-Abbas12/MedicalCare', mark: '06', tone: 'project-blue', tag: 'HEALTHCARE' },
   { name: 'HealthCare Website', kind: 'Dental care website', url: 'https://heathcarewebsite.vercel.app/', repo: 'https://github.com/kamil-Abbas12/DentalCare', mark: '07', tone: 'project-cream', tag: 'HEALTHCARE' },
   { name: 'Final Expense Leads', kind: 'Lead generation experience', url: 'https://finalexpense.topdoglead.com/', repo: 'https://github.com/kamil-Abbas12/final-expense', mark: '08', tone: 'project-dark', tag: 'LEAD GENERATION' },
+  { name: 'Pest Control', kind: 'Pest control lead generation', url: 'https://pestcontrol.topdoglead.com/', mark: '09', tone: 'project-blue', tag: 'LOCAL SERVICES' },
+  { name: 'Best Medicare Advisor', kind: 'Medicare advisory website', url: 'http://bestmedicareadvisor.com/', mark: '10', tone: 'project-sand', tag: 'MEDICARE' },
+  { name: 'Solar', kind: 'Solar lead generation', url: 'https://solar.topdoglead.com/', mark: '11', tone: 'project-green', tag: 'SOLAR' },
+  { name: 'Affordable Care Act', kind: 'Healthcare lead generation', url: 'https://affordablecareact.topdoglead.com/', mark: '12', tone: 'project-copper', tag: 'HEALTHCARE' },
+  { name: 'Hospital Indemnity', kind: 'Hospital indemnity lead generation', url: 'https://hospitalindemnity.topdoglead.com/', mark: '13', tone: 'project-cream', tag: 'INSURANCE' },
 ];
 
-const stack = ['Next.js', 'React', 'TypeScript', 'Node.js', 'Express', 'MongoDB', 'PostgreSQL', 'Prisma', 'Tailwind CSS', 'Firebase', 'REST APIs', 'Stripe', 'Vercel'];
+const stackGroups = [
+  {
+    label: 'WEB DEVELOPMENT',
+    items: ['Next.js', 'React', 'TypeScript', 'JavaScript', 'Node.js', 'Express', 'MongoDB', 'PostgreSQL', 'Firebase', 'Tailwind CSS', 'REST APIs', 'GraphQL', 'JWT Auth', 'Stripe', 'Python', 'Git & GitHub', 'Vercel', 'Docker (basic)'],
+  },
+  {
+    label: 'SEO & ANALYTICS',
+    items: ['Technical SEO', 'On-page SEO', 'Keyword research', 'Site audits', 'Rank tracking', 'SEMrush', 'Ahrefs', 'SE Ranking', 'Google Search Console', 'Bing Webmaster Tools', 'Google Analytics 4', 'Core Web Vitals'],
+  },
+  {
+    label: 'PRACTICES',
+    items: ['Responsive design', 'Mobile-first', 'Performance optimization', 'CI/CD', 'Agile / Scrum', 'Clean code'],
+  },
+];
+const stackCount = stackGroups.reduce((total, group) => total + group.items.length, 0);
 
 function SafeLink({ href, children, className = '', label }: { href: string; children: ReactNode; className?: string; label?: string }) {
   return <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className={className} data-testid="link-external">{children}</a>;
@@ -44,8 +63,8 @@ function Portfolio() {
       <section className="hero section-wrap" id="home" aria-labelledby="hero-title">
         <div className="hero-copy hero-enter">
           <p className="eyebrow"><span className="eyebrow-line" />ISLAMABAD, PAKISTAN <span className="eyebrow-sep">/</span> FULL STACK WEB DEVELOPER</p>
-          <h1 id="hero-title" data-testid="heading-intro">I build digital<br /><em>things that work.</em></h1>
-          <p className="hero-description" data-testid="text-intro">From production-ready web applications to connected hardware, I bring an engineer’s eye to every layer of the build.</p>
+          <h1 id="hero-title" data-testid="heading-intro">I build digital<br /><em>things that work.</em><span className="hero-qualification">Full-stack web developer · Technical SEO</span></h1>
+          <p className="hero-description" data-testid="text-intro">From production-ready web applications and lead-generation sites to connected hardware, I bring an engineer’s eye to every layer of the build.</p>
           <div className="hero-actions">
             <a href="#work" className="button-primary" data-testid="button-view-work">Explore selected work <ArrowDown size={16} /></a>
             <SafeLink href="mailto:kamilabbas929@gmail.com" className="text-link" label="Email Kamil Abbas">Let’s talk <MoveUpRight size={16} /></SafeLink>
@@ -54,11 +73,11 @@ function Portfolio() {
         <div className="hero-portrait hero-enter-delay" data-testid="profile-card">
           <div className="portrait-orbit orbit-one" /><div className="portrait-orbit orbit-two" />
           <div className="portrait-label"><span>FIG. 01</span><span>BUILDER PROFILE</span></div>
-          <div className="portrait-frame"><img src="/mypic.png" alt="Portrait of Kamil Abbas" data-testid="img-profile" /></div>
+          <div className="portrait-frame"><img src="/mypic.png" width={912} height={1173} alt="Portrait of Kamil Abbas" data-testid="img-profile" /></div>
           <div className="portrait-caption"><span className="caption-index">01—</span><span>Kamil Abbas<br /><small>Developer by practice. Engineer by training.</small></span><span className="caption-pin"><MapPin size={13} /> Islamabad</span></div>
           <span className="orbit-cross cross-a">+</span><span className="orbit-cross cross-b">+</span>
         </div>
-        <div className="hero-foot"><span>INDEPENDENT THINKING. PRACTICAL BUILDING.</span><a href="#work" aria-label="Scroll to selected work" data-testid="link-scroll-work"><ArrowDown size={15} /></a><span>01 / 04</span></div>
+        <div className="hero-foot"><span>INDEPENDENT THINKING. PRACTICAL BUILDING.</span><a href="#work" aria-label="Scroll to selected work" data-testid="link-scroll-work"><ArrowDown size={15} /></a><span>01 / 05</span></div>
       </section>
 
       <section className="work-section section-wrap" id="work" aria-labelledby="work-title">
@@ -69,7 +88,7 @@ function Portfolio() {
         <div className="projects-grid" data-testid="project-list">
           {projects.map((project) => (
             <article key={project.mark} className={`project-card ${project.tone}`} data-testid={`card-project-${project.mark}`}>
-              <div className="project-top"><span>{project.mark} / 08</span><span className="project-tag">{project.tag}</span></div>
+              <div className="project-top"><span>{project.mark} / {String(projects.length).padStart(2, '0')}</span><span className="project-tag">{project.tag}</span></div>
               <a className="project-main-link" href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${project.name}`} data-testid={`link-project-${project.mark}`}>
                 <span className="project-art" aria-hidden="true"><span className="art-sun" /><span className="art-window"><i /><i /><i /><i /></span><span className="art-base" /><span className="art-index">{project.mark}</span></span>
                 <span className="project-title-row"><span><strong>{project.name}</strong><small>{project.kind}</small></span><span className="project-arrow"><ArrowUpRight size={20} /></span></span>
@@ -83,21 +102,40 @@ function Portfolio() {
       <section className="about-section" id="about" aria-labelledby="about-title">
         <div className="about-inner section-wrap">
           <div className="about-heading"><p className="eyebrow light-eyebrow"><span className="eyebrow-line" />THE PERSON BEHIND THE BUILDS</p><h2 id="about-title" data-testid="heading-about">Two disciplines.<br /><em>One curious mind.</em></h2>
-            <p className="about-intro" data-testid="text-about">I’m Kamil, a full-stack web developer and electrical engineer in Islamabad. My work lives where careful engineering meets useful software—whether that means a web product people rely on or a device that senses and responds to the physical world.</p>
+            <p className="about-intro" data-testid="text-about">I’m Kamil, a full-stack web developer and electrical engineer in Islamabad with 4+ years of hands-on experience. I build useful web products and connected systems, and since March 2026 I’ve also focused on technical and on-page SEO for client sites.</p>
             <div className="credential-stamp"><span>PEC</span><span>REGISTERED<br />ENGINEER</span></div>
+            <div className="resume-highlights" data-testid="resume-highlights">
+              <div><strong>4+</strong><span>YEARS BUILDING</span></div>
+              <div><strong>50+</strong><span>FIVERR PROJECTS</span></div>
+              <div><strong>100%</strong><span>UPWORK JOB SUCCESS</span></div>
+            </div>
+            <p className="platform-credentials">UPWORK RISING TALENT <i>·</i> FIVERR LEVEL SELLER</p>
           </div>
           <div className="about-details">
-            <div className="detail-block"><span className="detail-num">01</span><div><h3>Currently building</h3><p className="detail-title">Full Stack Web Developer</p><p>Top Dog Leads LLC <span className="detail-meta">· Remote · Jan 2026—now</span></p></div></div>
-            <div className="detail-block"><span className="detail-num">02</span><div><h3>Independent work</h3><p className="detail-title">Freelance developer</p><p>Fiverr since 2022 <span className="detail-meta">·</span> Upwork since Apr 2026 <span className="detail-meta">· Rising Talent</span></p></div></div>
+            <div className="detail-block"><span className="detail-num">01</span><div><h3>Recent role</h3><p className="detail-title">Full Stack Web Developer</p><p>Top Dog Leads LLC <span className="detail-meta">· Remote · Jan 2026—Oct 1, 2026</span></p></div></div>
+            <div className="detail-block"><span className="detail-num">02</span><div><h3>Independent work</h3><p className="detail-title">Freelance developer</p><p>Fiverr since May 2022 <span className="detail-meta">·</span> Upwork since Apr 2026 <span className="detail-meta">· Rising Talent · Fiverr Level Seller</span></p></div></div>
             <div className="detail-block"><span className="detail-num">03</span><div><h3>Education</h3><p className="detail-title">B.S. Electrical &amp; Electronics Engineering</p><p>COMSATS University Islamabad <span className="detail-meta">· 2024</span></p></div></div>
             <div className="detail-block capstone-block"><span className="detail-num">04</span><div><h3>Engineering capstone</h3><p className="detail-title">Smart water, thoughtfully engineered.</p><p>IoT smart water filtration and monitoring system integrating sensors, microcontrollers, automated filtration, and mobile monitoring.</p><div className="system-flow"><span>SENSORS</span><i /><span>CONTROL</span><i /><span>FILTER</span><i /><span>MOBILE</span></div></div></div>
+            <div className="detail-block"><span className="detail-num">05</span><div><h3>SEO &amp; organic growth</h3><p className="detail-title">Technical and on-page SEO</p><p>Keyword research, site audits, rank tracking, indexing and crawl monitoring, Core Web Vitals, and GA4 analysis for client websites.</p></div></div>
+            <div className="detail-block"><span className="detail-num">06</span><div><h3>Selected product build</h3><p className="detail-title">Multi-tenant SaaS booking platform</p><p>Role-based dashboards, Stripe payments, and automated email notifications; reduced booking management overhead by 40%.</p></div></div>
           </div>
         </div>
       </section>
 
       <section className="toolkit-section section-wrap" aria-labelledby="toolkit-title">
         <div className="toolkit-intro"><p className="eyebrow"><span className="eyebrow-line" />THE TOOLS IN MY WORKBENCH</p><h2 id="toolkit-title" data-testid="heading-toolkit">A stack for<br /><em>shipping ideas.</em></h2><p>From the first component to the last deploy, these are the tools I reach for.</p></div>
-        <div className="stack-area"><div className="stack-topline"><span>WEB DEVELOPMENT TOOLKIT</span><span>13 TOOLS</span></div><div className="stack-list" data-testid="stack-list">{stack.map((tool, index) => <span className="stack-chip" key={tool} data-testid={`skill-${index}`}>{tool}<small>{String(index + 1).padStart(2, '0')}</small></span>)}</div><div className="stack-foot"><span>FRONTEND</span><span>BACKEND</span><span>DATA</span><span>DEPLOYMENT</span></div></div>
+        <div className="stack-area">
+          <div className="stack-topline"><span>WEB + SEO TOOLKIT</span><span>{stackCount} SKILLS &amp; TOOLS</span></div>
+          <div className="stack-groups" data-testid="stack-list">
+            {stackGroups.map((group, groupIndex) => (
+              <div className="stack-group" key={group.label}>
+                <h3>{group.label}</h3>
+                <div className="stack-list">{group.items.map((tool, index) => <span className="stack-chip" key={tool} data-testid={`skill-${groupIndex}-${index}`}>{tool}<small>{String(index + 1).padStart(2, '0')}</small></span>)}</div>
+              </div>
+            ))}
+          </div>
+          <div className="stack-foot"><span>WEB APPS</span><span>SEARCH</span><span>PERFORMANCE</span><span>DELIVERY</span></div>
+        </div>
       </section>
 
       <section className="contact-section" id="contact" aria-labelledby="contact-title">
