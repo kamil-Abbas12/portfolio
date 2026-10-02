@@ -1,45 +1,59 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Kamil Abbas",
+  jobTitle: "Full-Stack Web Developer and SEO Specialist",
+  description: "Full-stack developer and technical SEO specialist in Islamabad, Pakistan.",
+  email: "mailto:kamilabbas929@gmail.com",
+  address: { "@type": "PostalAddress", addressLocality: "Islamabad", addressCountry: "PK" },
+  alumniOf: { "@type": "CollegeOrUniversity", name: "COMSATS University Islamabad" },
+  sameAs: [
+    "https://github.com/kamil-Abbas12",
+    "https://www.linkedin.com/in/kamilabbas1214/",
+    "https://www.upwork.com/freelancers/kamila32",
+    "https://www.fiverr.com/s/ZmXbPBa"
+  ],
+  knowsAbout: [
+    "Full-stack web development", "Technical SEO", "On-page SEO", "Keyword research",
+    "Site audits", "Core Web Vitals", "Google Analytics 4", "IoT systems"
+  ]
+};
+
 export const metadata: Metadata = {
-  title: "Kamil Abbas — Full Stack Developer",
-  description:
-    "Full Stack Web Developer specializing in Next.js, React, Node.js, and MongoDB. Working at Top Dog Leads LLC, freelancing on Upwork & Fiverr. PEC Registered Engineer from Islamabad, Pakistan.",
+  title: "Full-Stack Developer & SEO Specialist | Kamil Abbas",
+  description: "Full-stack developer and SEO specialist in Islamabad building fast web apps, lead-generation sites, and search-ready experiences with Next.js and React.",
   keywords: [
-    "Full Stack Developer",
-    "Next.js Developer",
-    "React Developer",
-    "MERN Stack",
-    "Web Developer Pakistan",
-    "Kamil Abbas",
-    "Upwork",
-    "Fiverr",
+    "Kamil Abbas", "Full-Stack Developer", "SEO Specialist", "Technical SEO", "On-page SEO",
+    "Next.js Developer", "React Developer", "Web Developer Islamabad", "Lead Generation"
   ],
   authors: [{ name: "Kamil Abbas", url: "https://www.linkedin.com/in/kamilabbas1214/" }],
   openGraph: {
-    title: "Kamil Abbas — Full Stack Developer",
-    description:
-      "Building modern, performant web applications. Next.js · React · Node.js · MongoDB.",
+    title: "Full-Stack Developer & SEO Specialist | Kamil Abbas",
+    description: "Full-stack developer and SEO specialist in Islamabad building fast web apps, lead-generation sites, and search-ready experiences with Next.js and React.",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Full-Stack Developer & SEO Specialist | Kamil Abbas",
+    description: "Full-stack developer and SEO specialist in Islamabad building fast web apps, lead-generation sites, and search-ready experiences with Next.js and React.",
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="scroll-smooth">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Satoshi:wght@300;400;500;700&family=Fira+Code:wght@300;400;500&display=swap"
-          rel="stylesheet"
-        />
+        <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }} />
+        {children}
+      </body>
     </html>
   );
 }
