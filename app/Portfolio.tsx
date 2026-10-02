@@ -32,7 +32,7 @@ const projects = [
 const stackGroups = [
   {
     label: 'WEB DEVELOPMENT',
-    items: ['Next.js', 'React', 'TypeScript', 'JavaScript', 'Node.js', 'Express', 'MongoDB', 'PostgreSQL', 'Firebase', 'Tailwind CSS', 'REST APIs', 'GraphQL', 'JWT Auth', 'Stripe', 'Python', 'Git & GitHub', 'Vercel', 'Docker (basic)'],
+    items: ['Next.js', 'React', 'TypeScript', 'JavaScript', 'Node.js', 'Express', 'MongoDB', 'PostgreSQL', 'Prisma', 'Firebase', 'Tailwind CSS', 'REST APIs', 'GraphQL', 'JWT Auth', 'Stripe', 'Python', 'Git & GitHub', 'Vercel', 'Docker (basic)'],
   },
   {
     label: 'SEO & ANALYTICS',
